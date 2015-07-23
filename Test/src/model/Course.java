@@ -36,6 +36,7 @@ public class Course {
 	}
 
 	public void setName(String name) {
+		if(name != null && !name.isEmpty())
 		this.name = name;
 	}
 
@@ -43,8 +44,17 @@ public class Course {
 		return calories;
 	}
 
+	//this logic shoud be in controller
 	public void setCalories(double calories) {
-		this.calories = calories;
+		//get param for current user ?
+//		AppUser u = new AppUser();
+//		if(u.getIsMale()){
+//			this.calories = (66 + 13.7*u.getWeight() + 5*u.getHeight() - 6.8*u.getAge())*u.getActivityLevel();
+//		}else{
+//			this.calories =(655 + 9.6*u.getWeight() + 1.8*u.getHeight() - 4.7*u.getAge())*u.getActivityLevel();
+//		}
+		if(calories>0)
+			this.calories = calories;
 	}
 
 	public double getProteins() {
@@ -52,6 +62,7 @@ public class Course {
 	}
 
 	public void setProteins(double proteins) {
+		if(proteins>0)
 		this.proteins = proteins;
 	}
 
@@ -60,6 +71,7 @@ public class Course {
 	}
 
 	public void setFats(double fats) {
+		if(fats>0)
 		this.fats = fats;
 	}
 
@@ -68,6 +80,7 @@ public class Course {
 	}
 
 	public void setCarbohydrates(double carbohydrates) {
+		if(carbohydrates>0)
 		this.carbohydrates = carbohydrates;
 	}
 	
