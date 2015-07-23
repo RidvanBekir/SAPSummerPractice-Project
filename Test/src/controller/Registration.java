@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +20,11 @@ import model.AppUser;
 public class Registration extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private EntityManagerFactory factory;
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		factory = (EntityManagerFactory) config.getServletContext().getAttribute(EntityManagerFactory.class.getName());
+	}
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -53,13 +59,12 @@ public class Registration extends HttpServlet {
 		email = (String) request.getParameter("email");
 		sex = (String) request.getParameter("gender");
 		age = Integer.parseInt((String) request.getParameter("age"));
-		
+
 		if (username == null || username.isEmpty() || password == null || password.isEmpty() || repassword == null
 				|| repassword.isEmpty() || email == null || email.isEmpty() || firstName == null || firstName.isEmpty()
-				|| lastName == null || lastName.isEmpty() || age <= 0 || age < 100 || sex == null || sex.isEmpty()) {
+				|| lastName == null || lastName.isEmpty() || age <= 0 || age > 100 || sex == null || sex.isEmpty()) {
 			// wrong data input
-			//response.sendError(400, "Wrong data input!");
-			System.out.println("Wrong data input");
+			response.sendError(400, "Wrong data input!");
 		}
 
 		if (sex.equalsIgnoreCase("male")) {
@@ -67,9 +72,9 @@ public class Registration extends HttpServlet {
 		} else
 			isMale = false;
 
-		/*if (password.equals(repassword) == false) {
+		if (password.equals(repassword) == false) {
 			response.sendError(400, "Passwords do not match!");
-		}*/
+		}
 
 		// MD5
 		String cryptPass = SettingManager.cryptMD5(password);
@@ -81,7 +86,7 @@ public class Registration extends HttpServlet {
 		Boolean validEmail = email.matches(emailreg);
 		if (!validEmail) {
 			System.out.println("Invalid email");
-			//response.sendError(400, "Invalid email!");
+			response.sendError(400, "Invalid email!");
 		}
 
 		// checked in DB
@@ -90,7 +95,7 @@ public class Registration extends HttpServlet {
 		EntityManager em = null;
 		try {
 			em = factory.createEntityManager();
-			if (em.find(AppUser.class, username) != null) {
+			if (em.find(AppUser.class, username) == null) {
 				em.persist(user);
 			} else {
 				response.sendError(400, "Cannot create user!");

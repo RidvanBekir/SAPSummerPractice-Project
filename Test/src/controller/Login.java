@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.TypedQuery;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,30 +36,6 @@ public class Login extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		doPost(request, response);
-
-		// EntityManager em = factory.createEntityManager();
-		// try {
-		// em.getTransaction().begin();
-		// em.createQuery("select U from User U where U.naame = :name and U.pwd
-		// = :pwd", User.class)
-		// .setParameter("name", "").getSingleResult();
-		// } finally {
-		// if (null != em) {
-		// em.close();
-		// }
-		// }
-
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
@@ -88,13 +63,17 @@ public class Login extends HttpServlet {
 		try {
 			TypedQuery<AppUser> search = em.createQuery("select U from AppUser U where U.username = :name and U.password= :pwd", AppUser.class);
 			search.setParameter("name", username);
+			String cryptPass = SettingManager.cryptMD5(password);
+			password = cryptPass;
+			System.out.println("Searching cripted pass: " + password);
 			search.setParameter("pwd", password);
 			try{
 			search.getSingleResult();
 			loggedIn = true;
 			}
 			catch(Exception e){
-				RequestDispatcher rd = null;
+				//RequestDispatcher rd = null;
+				e.printStackTrace();
 				response.sendRedirect("Registration.jsp");
 				//response.sendError(200, "Wrong username or password");
 			}
