@@ -11,9 +11,9 @@
   <br>
   <br>
   <br>
-  <center><p> All rights reserved. </p></center>
-  <center><p>Posted by: </p></center>
+  <center><p><font color = "white"> All rights reserved. </font>></p></center>
+  <center><p><font color = "white">Posted by: </font></p></center>
   
-  <center><p>Contact information: <a href="mailto:fitness@gmail.com">someone@example.com</a>.</p></center>
+  <center><p><font color = "white">Contact information: </font><a href="mailto:fitness@gmail.com">someone@example.com</a>.</p></center>
 </body>
 </html>
