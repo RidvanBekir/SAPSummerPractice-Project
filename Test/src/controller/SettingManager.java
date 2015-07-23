@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 public class SettingManager {
 	// MD5
 		public static String cryptMD5(String message) {
-			MessageDigest md;
+			/*MessageDigest md;
 			try {
 					md = MessageDigest.getInstance("MD5");
 				
@@ -26,6 +26,20 @@ public class SettingManager {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			return message;*/
+			MessageDigest md = null;
+			try {
+				md = MessageDigest.getInstance("MD5");
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
+			md.update(message.getBytes());
+			byte[] digest = md.digest();
+			StringBuffer sb = new StringBuffer();
+			for (byte b : digest) {
+				sb.append(String.format("%02x", b & 0xff));
+			}
+			message = sb.toString();
 			return message;
 		}
 }

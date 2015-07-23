@@ -48,17 +48,18 @@ public class Registration extends HttpServlet {
 		username = (String) request.getParameter("username");
 		password = (String) request.getParameter("password");
 		repassword = (String) request.getParameter("repassword");
-		email = (String) request.getParameter("email");
 		firstName = (String) request.getParameter("firstName");
 		lastName = (String) request.getParameter("lastName");
+		email = (String) request.getParameter("email");
 		sex = (String) request.getParameter("gender");
 		age = Integer.parseInt((String) request.getParameter("age"));
-
+		
 		if (username == null || username.isEmpty() || password == null || password.isEmpty() || repassword == null
 				|| repassword.isEmpty() || email == null || email.isEmpty() || firstName == null || firstName.isEmpty()
 				|| lastName == null || lastName.isEmpty() || age <= 0 || age < 100 || sex == null || sex.isEmpty()) {
 			// wrong data input
-			response.sendError(400, "Wrong data input!");
+			//response.sendError(400, "Wrong data input!");
+			System.out.println("Wrong data input");
 		}
 
 		if (sex.equalsIgnoreCase("male")) {
@@ -66,25 +67,26 @@ public class Registration extends HttpServlet {
 		} else
 			isMale = false;
 
-		if (password != repassword) {
+		/*if (password.equals(repassword) == false) {
 			response.sendError(400, "Passwords do not match!");
-		}
+		}*/
 
 		// MD5
 		String cryptPass = SettingManager.cryptMD5(password);
-		System.out.println(cryptPass);
 		password = cryptPass;
+		System.out.println("Cripted pass: " + password);
 
 		// Email validation
 		String emailreg = "^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 		Boolean validEmail = email.matches(emailreg);
 		if (!validEmail) {
-			response.sendError(400, "Invalid email!");
+			System.out.println("Invalid email");
+			//response.sendError(400, "Invalid email!");
 		}
 
 		// checked in DB
 		AppUser user = new AppUser(username, password, email, firstName, lastName, age, isMale);
-		System.out.println(user.toString());
+		System.out.println("User to string :" + user.toString());
 		EntityManager em = null;
 		try {
 			em = factory.createEntityManager();

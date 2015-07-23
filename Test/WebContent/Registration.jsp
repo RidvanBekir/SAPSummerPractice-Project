@@ -29,11 +29,11 @@ background-size: cover;
 			</tr>
 			<tr>
 				<td><label><font color = "white">Password:</font></label></td>
-				<td><input type="password"  size=15></td>
+				<td><input type="password" name="password" ></td>
 			</tr>
 			<tr>
 				<td><label><font color = "white">Repeat Password:</font></label></td>
-				<td><input type="password" size=15></td>
+				<td><input type="password" name="repassword" ></td>
 			</tr>
 			<tr>
 				<td><label><font color = "white" >First name:</font></label></td>
