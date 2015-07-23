@@ -4,17 +4,25 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Living healthy for life</title>
+<style>
+html {
+background: url(Photos/background_2.jpg) no-repeat center center fixed;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+<title><font color = "white">Living healthy for life</font></title>
 </head>
 <body >
 <%@ include file="Header.jsp" %>
 <%@ include file="Menu.jsp" %>
-<h1>Fitness: Getting and Staying Active</h1>
-<p><font size="5">Fitness means being able to perform physical activity. It also means having the energy and strength to feel as good as possible. Getting more fit, even a little bit, can improve your health.
+<h1><font color = "white">Fitness: Getting and Staying Active</font></h1>
+<p><font size="5" color = "white">Fitness means being able to perform physical activity. It also means having the energy and strength to feel as good as possible. Getting more fit, even a little bit, can improve your health.
 
 You don't have to be an athlete to be fit. A brisk half-hour walk every day can help you reach a good level of fitness. And if this is hard for you, you can work toward a level of fitness that helps you feel better and have more energy.</font></p>
-<h1>What are the benefits of fitness?</h1>
-<p><font size="5">Fitness helps you feel better and have more energy for work and leisure time. You'll feel more able to do things like playing with your kids, gardening, dancing, or biking. Children and teens who are fit may have more energy and better focus at school.
+<h1><font color = "white">What are the benefits of fitness?</font></h1>
+<p><font size="5" color = "white">Fitness helps you feel better and have more energy for work and leisure time. You'll feel more able to do things like playing with your kids, gardening, dancing, or biking. Children and teens who are fit may have more energy and better focus at school.
 
 When you stay active and fit, you burn more calories, even when you're at rest. Being fit lets you do more physical activity. And it lets you exercise harder without as much work. It can also help you manage your weight.
 

@@ -10,10 +10,9 @@
  <center><form NAME="form1" METHOD="POST">
  <input type="button" style="background-color:LightSeaGreen" value="Home Page" 
  onclick="openPage('Login.jsp')"/>
- 
 <input type="button" style="background-color:LightSeaGreen" value="About us" 
  onclick="openPage('AboutUs.jsp')"/>
-<input type="button" style="background-color:LightSeaGreen" value="Information" onclick="openPage('information.jsp')"/>
+<input type="button" style="background-color:LightSeaGreen" value="Information" onclick="openPage('Information.jsp')"/>
 </form></center>
 <script type="text/javascript">
  function openPage(pageURL)

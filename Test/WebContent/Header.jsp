@@ -16,7 +16,7 @@
 </head>
 <body>
 <div id="header">
-<h1 align=center><i> Living healthy for life !</i></h1>
+<h1 align=center><i><font color = "white"> Living healthy for life !</font></i></h1>
 </div>
 </body>
 </html>
