@@ -60,7 +60,7 @@ background-size: cover;
 <br>
 </center>
 <br>
-<center><input type="submit" value="Submit" onclick="location.href='yourpage.html'" /></center><br>
+<center><input type="submit" value="Submit" VALUE="Submit"/></center><br>
 <center><input type="button" value="Discard changes" onclick="location.href='yourpage.html'" /></center>
 </form>
 <%@ include file="Footer.jsp" %>

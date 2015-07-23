@@ -9,7 +9,7 @@
 <body>
 <%@ include file="Header.jsp" %>
 <%@ include file="Menu.jsp" %>
- 
+  <h1 align="center">Advanced Workout Plan</h1>
  <table align="center" border="1"  width="90%">
 <tr ><td align="center"><b>Day 1 (Monday - Chest Day)</b></td></tr>
 <tr>

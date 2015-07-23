@@ -38,12 +38,15 @@ public class UserInfo extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int weight;
-		System.out.println();
-		
-		weight = request.getParameter("weight")!=null ?  Integer.parseInt(request.getParameter("weight")) : 0 ;
-		System.out.println("Your weight is : " + weight);
-
+		String result = request.getParameter("physic");
+		//request.setAttribute("name", "value");
+		//request.getRequestDispatcher("page.jsp").forward(request, response);
+		if(result.equalsIgnoreCase("Yes")){
+			response.sendRedirect("AdvancedWorkOutPlan.jsp");
+		}
+		else{
+			response.sendRedirect("BegginerWorkOutPlan.jsp");
+		}
 	}
 
 }

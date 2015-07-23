@@ -134,8 +134,6 @@
 <tr>
 <td colspan="4">Cardio: 20 minutes a€“ brisk walk, bike or jog</td>
 </tr>
-</table>
-<%@ include file="Footer.jsp" %>
- 
+</table> 
 </body>
 </html>
