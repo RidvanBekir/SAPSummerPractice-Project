@@ -25,36 +25,36 @@ background-size: cover;
 		<table  align="center" >
 		 	<tr>
 				<td><label><font color = "white" >Username:</font></label></td>
-				<td><input type="text" name="username"></td>
+				<td><input type="text" name="username" required></td>
 			</tr>
 			<tr>
 				<td><label><font color = "white">Password:</font></label></td>
-				<td><input type="password" name="password" ></td>
+				<td><input type="password" name="password" required></td>
 			</tr>
 			<tr>
 				<td><label><font color = "white">Repeat Password:</font></label></td>
-				<td><input type="password" name="repassword" ></td>
+				<td><input type="password" name="repassword" required></td>
 			</tr>
 			<tr>
 				<td><label><font color = "white" >First name:</font></label></td>
-				<td><input type="text" name="firstName"></td>
+				<td><input type="text" name="firstName" required></td>
 			</tr>
 			<tr>
 				<td><label><font color = "white" >Last name:</font></label></td>
-				<td><input type="text" name="lastName"></td>
+				<td><input type="text" name="lastName" required></td>
 			</tr>
 			<tr>
 				<td><label><font color = "white" >E-mail address:</font></label></td>
-				<td><input type="text" name="email" ></td>
+				<td><input type="text" name="email" required></td>
 			</tr>
 			<tr>
 				<td><label><font color = "white">Age:</font></label></td>
-				<td><input type="text"  name="age">
+				<td><input type="text"  name="age" required>
 						
 			</tr>
 			<tr>
 				<td><label><font color = "white">Gender:</font></label></td>
-				<td><select name="gender">
+				<td><select name="gender" required>
 						<option value="male" selected>Male</option>
 						<option value="female">Female</option>
 						</select>

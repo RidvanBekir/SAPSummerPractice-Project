@@ -24,11 +24,11 @@ background-size: cover;
 <form action = "UserInfo" method = "post" >
 <center>
 <table>
-<tr><td><b><font color = "white">Weight(in kilograms):</font></b></td><td><input type="text" name="weight"/></td></tr>
-<tr><td><b><font color = "white">Height (in centimeters):</font></b></td><td><input type="text" name="height"/> </td></tr>
+<tr><td><b><font color = "white">Weight(in kilograms):</font></b></td><td><input type="text" name="weight" required/></td></tr>
+<tr><td><b><font color = "white">Height (in centimeters):</font></b></td><td><input type="text" name="height" required/> </td></tr>
 <tr>
 <td><b><font color = "white">Can you make 10 pull ups and 20 push ups:</font></b></td>
-<td><select name="physic">
+<td><select name="physic" required>
 <option>Yes</option>
 <option>No</option>
 </select>
@@ -38,7 +38,7 @@ background-size: cover;
 <br>
 
 <b><font color = "white">Input activity level</font></b>
-<select name="ActivityLevel">
+<select name="ActivityLevel" required>
 <option>Rarely exercise</option>
 <option>Light exercise (1-3 hours)</option>
 <option>Moderate exercise (3-5 hours)</option>
@@ -48,7 +48,7 @@ background-size: cover;
 <br></br>
 
 <b><font color = "white">What is your aim? </font></b>
-<select name="Goal">
+<select name="Goal" required>
 <option>Clean bulk</option>
 <option>Gain muscle, lose fat</option>
 <option>Lose fat - 5%</option>
@@ -61,8 +61,14 @@ background-size: cover;
 </center>
 <br>
 <center><input type="submit" value="Submit" VALUE="Submit"/></center><br>
-<center><input type="button" value="Discard changes" onclick="location.href='yourpage.html'" /></center>
+<center><input type="button" value="Discard changes" onclick="openPage('')" /></center>
 </form>
+<script type="text/javascript">
+ function openPage(pageURL)
+ {
+ window.location.href = pageURL;
+ }
+</script>
 <%@ include file="Footer.jsp" %>
    
 </body>

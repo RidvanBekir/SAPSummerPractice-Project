@@ -7,11 +7,13 @@
 <title>UserInfoMenu</title>
 </head>
 <body>
+<% String workOutPlan = (String) request.getAttribute("physic") !=null ? (String) request.getAttribute("physic"): "BegginerWorkoutPlan.jsp" ;
+%>
  <center><form NAME="form2" METHOD="POST">
  <input type="button" style="background-color:LightSeaGreen" value="My characteristics" 
  onclick="openPage('')"/>
 <input type="button" style="background-color:LightSeaGreen" value="My workout plan" 
- onclick="openPage('')"/>
+ onclick="openPage('<%= workOutPlan %>')"/>
  <input type="button" style="background-color:LightSeaGreen" value="My meal plan" 
  onclick="openPage('')"/>
  <input type="button" style="background-color:LightSeaGreen" value="About us" 
