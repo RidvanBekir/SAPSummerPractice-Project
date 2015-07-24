@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.AppUser;
 
@@ -43,7 +44,7 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		if(request.getParameter("Register") != null){
+		if (request.getParameter("Register") != null) {
 			response.sendRedirect("Registration.jsp");
 		}
 		String username = null;
@@ -52,23 +53,16 @@ public class Login extends HttpServlet {
 		password = (String) request.getParameter("password");
 		if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
 			response.setStatus(400);
-			//da se dobavi suob6tenie
+			// da se dobavi suob6tenie
 		}
 		EntityManager em = factory.createEntityManager();
 		if (em == null) {
 			System.out.println("Entity not created.");
 
 		}
-		
+
 		boolean loggedIn = false;
 		try {
-			
-			TypedQuery<AppUser> allUserQuery = em.createQuery("select U from AppUser U ", AppUser.class);
-			List<AppUser> listUser = allUserQuery.getResultList();
-			for(AppUser u : listUser){
-				System.out.println(u.toString());
-			}
-			
 			TypedQuery<AppUser> search = em.createQuery("select U from AppUser U where U.username = :name and U.password= :pwd", AppUser.class);
 			search.setParameter("name", username);
 			String cryptPass = SettingManager.cryptMD5(password);
@@ -76,11 +70,12 @@ public class Login extends HttpServlet {
 			System.out.println("Searching cripted pass: " + password);
 			search.setParameter("pwd", password);
 			try{
-			search.getSingleResult();
+			AppUser user =	search.getSingleResult();
+			HttpSession hs = request.getSession();
+			hs.setAttribute("user", user);
 			loggedIn = true;
 			}
 			catch(Exception e){
-				//RequestDispatcher rd = null;
 				e.printStackTrace();
 				response.sendRedirect("Registration.jsp");
 				//response.sendError(200, "Wrong username or password");

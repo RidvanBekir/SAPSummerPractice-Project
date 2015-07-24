@@ -11,11 +11,11 @@
 %>
  <center><form NAME="form2" METHOD="POST">
  <input type="button" style="background-color:LightSeaGreen" value="My characteristics" 
- onclick="openPage('')"/>
+ onclick="openPage('MyCharacteristics')"/>
 <input type="button" style="background-color:LightSeaGreen" value="My workout plan" 
  onclick="openPage('<%= workOutPlan %>')"/>
  <input type="button" style="background-color:LightSeaGreen" value="My meal plan" 
- onclick="openPage('')"/>
+ onclick="openPage('MealPlan.html')"/>
  <input type="button" style="background-color:LightSeaGreen" value="About us" 
  onclick="openPage('AboutUs.jsp')"/>
 <input type="button" style="background-color:LightSeaGreen" value="Information" onclick="openPage('Information.jsp')"/>

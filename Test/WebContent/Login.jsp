@@ -30,12 +30,6 @@ background-size: cover;
 <center><p><input type="password" name="password"></p></center>
 <center><input type = "submit" name= "Log In" VALUE="Log In"></center><br>
 <center><input type = "submit" name= "Register" VALUE="Register"></center>><br>
-<center><h3><font color = "white">About us</font></h3></center>
-<center><p><font color = "white">We are a team of university students. Our main reason for making this site is
-to help people get fit.</font></p></center>
-<center><a href="https://prezi.com/nhi4ealcfci1/untitled-prezi/?utm_campaign=share&utm_medium=copy" target="_blank">Presentation of the app!</a></center>
-<center><p><font color = "white">You can also help us by filling in our investigation in the link below.</font></p></center>
-<center><a href="https://www.surveymonkey.com/r/K3M2MQ5" target="_blank" >CLICK HERE!</a></center>
 </form>
 <%@ include file="Footer.jsp" %>
 </body>

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.AppUser;
 
@@ -96,16 +97,19 @@ public class Registration extends HttpServlet {
 		try {
 			em = factory.createEntityManager();
 			if (em.find(AppUser.class, username) == null) {
+				em.getTransaction().begin();
 				em.persist(user);
+				em.getTransaction().commit();
 			} else {
-				response.sendError(400, "Cannot create user!");
+				//response.sendError(400, "Cannot create user!");
 			}
 		} finally {
 			if (em != null) {
 				em.close();
 			}
 		}
+		HttpSession hs = request.getSession();
+		hs.setAttribute("user", user);
 		response.sendRedirect("UserInfo.jsp");
-
 	}
 }

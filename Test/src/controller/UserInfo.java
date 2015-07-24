@@ -8,6 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import model.AppUser;
 
 /**
  * Servlet implementation class UserInfo
@@ -23,19 +26,6 @@ public class UserInfo extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	// protected void doGet(HttpServletRequest request, HttpServletResponse
-	// response) throws ServletException, IOException {
-	// // TODO Auto-generated method stub
-	// response.getWriter().append("Served at:
-	// ").append(request.getContextPath());
-	// doPost(request, response);
-	// }
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -51,12 +41,24 @@ public class UserInfo extends HttpServlet {
 		if (weight < 0 || height < 0) {
 			response.sendError(400, "Wrong data input");
 		}
+		
+		HttpSession hs = request.getSession();
+		AppUser u = (AppUser) hs.getAttribute("user");
+		u.setWeight(weight);
+		u.setHeight(height);
+		u.setAim(aim);
+		u.setActivityLevel(activityLevel);
+		
 		if (physic.equalsIgnoreCase("Yes")) {
-			request.setAttribute("physic", "AdvancedWorkOutPlan.jsp");
-			request.getRequestDispatcher("UserInfoMenu.jsp").forward(request, response);
+			u.setWorkOutPlan("AdvancedWorkOutPlan");
+			request.setAttribute("physic", "AdvancedWorkOutPlan.jsp");			
 		} else {
+			u.setWorkOutPlan("BegginerWorkOutPlan");
 			request.setAttribute("physic", "BegginerWorkOutPlan.jsp");
-			request.getRequestDispatcher("UserInfoMenu.jsp").forward(request, response);
 		}
+		hs.setAttribute("user", u);
+		request.getRequestDispatcher("UserInfoMenu.jsp").forward(request, response);
+		System.out.println(hs.getAttribute("user").toString());
+		response.sendRedirect("Information.jsp");
 	}
 }
