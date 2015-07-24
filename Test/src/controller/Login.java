@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -61,6 +62,13 @@ public class Login extends HttpServlet {
 		
 		boolean loggedIn = false;
 		try {
+			
+			TypedQuery<AppUser> allUserQuery = em.createQuery("select U from AppUser U ", AppUser.class);
+			List<AppUser> listUser = allUserQuery.getResultList();
+			for(AppUser u : listUser){
+				System.out.println(u.toString());
+			}
+			
 			TypedQuery<AppUser> search = em.createQuery("select U from AppUser U where U.username = :name and U.password= :pwd", AppUser.class);
 			search.setParameter("name", username);
 			String cryptPass = SettingManager.cryptMD5(password);
